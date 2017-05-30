@@ -4,7 +4,7 @@
 
 function addLoadFunc(func) {
     var oldOnLoad = window.onload;
-    if (typeof window.onload != "function"){
+    if (typeof window.onload !== "function"){
         window.onload = func;
     }else {
         window.onload = function () {
@@ -60,9 +60,6 @@ function myTest() {
     console.log(typeof N);
     console.log(typeof b);
     console.log(typeof B);
-
-
-
 
 
 
