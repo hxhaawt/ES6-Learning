@@ -85,8 +85,41 @@ function testFun1() {
     console.log(testPoint1 instanceof Point3);
     console.log(testPoint1 instanceof colorPoint);
 
+    // let arr1 = [1, 2, 3];
+    // arr1.splice(0, arr1.length, [8, 5, 6, 7]);
+    // console.log(arr1);
+    // arr1.push(9);
+    // console.log(arr1);
 
+    // Foo类的classMethod方法前有static关键字， 表明该方法是一个静态方法
+    class Foo{
+        static classMethod(){
+            console.log("Foo static method");
+        }
+    }
+    class Bar extends Foo{
 
+    }
+    Foo.classMethod();
+    // 父类的静态方法， 可以被子类继承
+    Bar.classMethod();
+    let valFoo = new Foo();
+    // valFoo.classMethod();
+
+    //
+    // for (var i = 0; i < 5; i++) {
+    //     setTimeout(function() {
+    //         console.log(new Date, i);
+    //     }, 1000);
+    // }
+    // console.log(new Date, i);
+
+    // 下面的输出 0， 1， 2， 3， 4
+    // for (let i = 0; i < 5; i++) {
+    //     setTimeout(function() {
+    //         console.log(new Date, i);
+    //     }, 1000);
+    // }
 
 
 
