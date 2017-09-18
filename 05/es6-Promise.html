@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>es6 Promise</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+    let promise = new Promise(function(resolve, reject) {
+        //console.log('Promise');
+
+        //setTimeout( () => reject("event fail"), 1000);
+        setTimeout( () => resolve("event success"), 1001);
+        
+    });
+    
+    promise.then(
+        ( msg ) => { 
+            console.log("resolve1: " + msg);
+            return "then 1 return msg"; 
+        }
+        //(msg) => { console.log("reject msg: " + msg) }
+    ).then(
+        ( msg ) => { 
+            setTimeout(
+                () => {
+                    console.log("resolve2: " + msg);
+                    return "then 2 return msg"; 
+                },
+                1000
+            );
+            //y+2;
+        }
+    ).then(
+        ( msg ) => { console.log("resolve3: " + msg) }
+    )
+    .catch(
+        (err) => {
+            console.log("error msg: " + err)
+        }
+    );
+
+
+</script>
+</body>
+</html>

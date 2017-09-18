@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>es6 Promise</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+    let p1 = new Promise(function(resolve, reject) {
+        
+        setTimeout( () => reject("p1 event fail"), 1000);
+    });
+
+     let p2 = new Promise(function(resolve, reject) {
+        
+        setTimeout( () => reject("p2 event fail"), 2000);
+    });
+
+    let p3 = new Promise(function(resolve, reject) {
+      
+        setTimeout( () => resolve("p3 event success"), 3000);
+    });
+
+    let p = Promise.all([p1, p2, p3]);
+
+    p.then(
+        (msg) => { 
+            console.log(msg);
+            console.log("resolve1: " + msg);
+        },
+        (msg) => { 
+            console.log("reject msg: " + msg); 
+        }
+    );
+
+
+</script>
+</body>
+</html>
