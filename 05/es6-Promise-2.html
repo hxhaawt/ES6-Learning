@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>es6 Promise</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+    const state = 1;
+
+    function step1 (res, rej) {
+        console.log('第1步...');
+
+        if (state === 1) {
+            res('第1步成功返回的值');
+        } else {
+            rej('第1步失败返回的值')
+        }
+    }
+
+    function step2 (res, rej) {
+
+        console.log('第2步...等待3s有第2步数据输出');
+        setTimeout( () => {
+            console.log('这是第2步3s之后输出的数据');
+
+            if (state === 1) {
+                res('第2步成功返回的值');
+            } else {
+                rej('第2步失败返回的值')
+            }
+        }, 3000);
+        
+    }
+
+    function step3 (res, rej) {
+        console.log('第3步...');
+
+        if (state === 1) {
+            res('第3步成功返回的值');
+        } else {
+            rej('第3步失败返回的值')
+        }
+    }
+
+
+    new Promise(step1)
+        .then( (val) => {
+                console.log('前面成功时返回的值：', val);
+                return new Promise(step2);
+            }, (err) => {
+                console.log('前面失败时返回的值：', err);
+                // 失败也可以执行其他程序
+                return new Promise(step2);
+            })
+        .then((val) => {
+                console.log('前面成功时返回的值：', val);
+                return new Promise(step3);
+            }, (err) => {
+                console.log('前面失败时返回的值：', err);
+                // 失败也可以执行其他程序
+                 return new Promise(step3);
+            })
+        .then((val) => {
+                console.log('前面成功时返回的值：', val);
+            }, (err) => {
+                console.log('前面失败时返回的值：', err);
+            });
+</script>
+</body>
+</html>

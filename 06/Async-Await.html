@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>es6 await</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+    console.log('begin--->');
+    
+    let sleep1 = function(time) {
+        return new Promise( (res, rej) => {
+            setTimeout( () => {
+                console.log('res--->');
+                res('res is ok');
+            }, time);
+        } )
+    };
+
+    let start1 = async function() {
+        let result = await sleep1(2000);
+
+        console.log('result: ', result);
+    }
+
+    var sleep = function (time) {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                // 返回 ‘ok’
+                resolve('ok');
+            }, time);
+        })
+    };
+
+    var start = async function () {
+        let result = await sleep(3000);
+        console.log(result); // 收到 ‘ok’
+    };
+
+
+</script>
+</body>
+</html>
